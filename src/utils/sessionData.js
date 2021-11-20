@@ -47,7 +47,6 @@ const sendData = (prb, gt) => {
         data: values,
         success: function (data) {
             console.log(data)
-            alert("hit")
         },
         error: function (data) {
             //alert(data);
