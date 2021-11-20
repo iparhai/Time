@@ -62,10 +62,10 @@ export default function Time(props) {
             <div>
                 <button className="glow-on-hover  bttn" type="button" style={{ marginTop: "46vh", marginLeft: "3vw" }} onClick={() => {
                     if (parseInt(answer.hour) == parseInt(props.correctAnswer.hour) && parseInt(answer.minute) == parseInt(props.correctAnswer.minute)) {
-                        props.submit(true)
+                        props.submit(true, answer.hour + ":"+ answer.minute)
                     }
                     else {
-                        props.submit(false)
+                        props.submit(false, answer.hour + ":"+ answer.minute)
                     }
                 }} > <i className="fa fa-paper-plane fa-3x" /></button>
             </div>

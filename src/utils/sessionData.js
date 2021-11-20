@@ -13,7 +13,7 @@ const setData = (problem, wordProblem, attemptedAnswer, corectAnswer) => {
 }
 const setDataTime = (timeTaken) => {
     data[index].timeTaken = timeTaken
-    
+
     sendData(data[index].problem, "a")
     sendData(data[index].wordProblem, "w")
     index += 1
@@ -22,8 +22,8 @@ const setDataTime = (timeTaken) => {
 const sendData = (prb, gt) => {
     console.log(data[index])
     const values = ""
-    let st= 0
-    if(data[index].attemptedAnswer == data[index].corectAnswer){
+    let st = 0
+    if (data[index].attemptedAnswer == data[index].corectAnswer) {
         st = 1
     }
     const limit = queryParams.get('limit');
@@ -42,20 +42,20 @@ const sendData = (prb, gt) => {
     // alert("id =  " + id)
     //alert("enters ajax with "+ limit+","+cid+","+crcid+","+sid+","+dif+","+uid+","+id)
     $.ajax({
-        url: "https://nano-softs.com/adaptive/api.php?prb=" + prb + "&aa="+data[index].attemptedAnswer+"&ca="+data[index].corectAnswer+"&tt="+data[index].timeTaken+"&st="+st+"&tkn="+tkn+"&limit="+limit+"&cid="+cid+"&crcid="+crcid+"&sid="+sid+"&dif="+dif+"&uid="+uid+"&id="+id+"&type="+type+"&gt="+gt,
+        url: "https://nano-softs.com/adaptive/api.php?prb=" + prb + "&aa=" + data[index].attemptedAnswer + "&ca=" + data[index].corectAnswer + "&tt=" + data[index].timeTaken + "&st=" + st + "&tkn=" + tkn + "&limit=" + limit + "&cid=" + cid + "&crcid=" + crcid + "&sid=" + sid + "&dif=" + dif + "&uid=" + uid + "&id=" + id + "&type=" + type + "&gt=" + gt,
         type: "post",
         data: values,
         success: function (data) {
             console.log(data)
             alert("hit")
         },
-        error: function(data) {
+        error: function (data) {
             //alert(data);
         }
     });
 }
-const authenticate = () =>{
-    if(tknFromServer == tkn) {
+const authenticate = () => {
+    if (tknFromServer == tkn) {
         return true
     }
     return true

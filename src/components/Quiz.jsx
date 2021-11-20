@@ -25,6 +25,7 @@ class Quiz extends React.Component {
     minute: 0,
     symbol: "",
     answer: 0,
+    attemptedAnswer: 0,
     modal: "",
     modalShowing: false,
     streaks: 0,
@@ -256,8 +257,12 @@ class Quiz extends React.Component {
               {/* <div >
                 <Drop incCount={() => { this.setState({ answer: this.state.answer + 1 }) }} decCount={() => { this.setState({ answer: this.state.answer - 1 }) }} count={this.state.answer} img={this.state.randomImage} evaluateProblem={this.evaluateProblem} />
               </div> */}
-              <Time correctAnswer={{ hour: this.state.hour, minute: this.state.minute }} submit={(correct) => {
-                sessionData.setData(this.state.hour + "!" + this.state.minute, this.state.wordProblem, 0, 0)
+              <Time correctAnswer={{ hour: this.state.hour, minute: this.state.minute }} attemptedAnswer={(value) => {
+                this.setState(
+                  { attemptedAnswer: value }
+                )
+              }} submit={(correct, attemptedAnswer) => {
+                sessionData.setData(this.state.hour + "!" + this.state.minute, this.state.wordProblem, attemptedAnswer, this.state.hour + ':' + this.state.minute)
                 if (correct) {
                   this.correctAnswer()
                 }
